@@ -101,21 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================
     const revealElements = document.querySelectorAll('.service-card, .process-step, .capability-item, .gallery-item, .testimonial-card');
     
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    revealElements.forEach((el, index) => {
-        el.classList.add('reveal-element');
-        el.style.transitionDelay = `${(index % 4) * 0.1}s`;
-        revealObserver.observe(el);
-    });
-    
-    // Add reveal styles
+    // Add reveal styles first
     const revealStyle = document.createElement('style');
     revealStyle.textContent = `
         .reveal-element {
@@ -129,6 +115,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(revealStyle);
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach((el, index) => {
+        el.classList.add('reveal-element');
+        el.style.transitionDelay = `${(index % 4) * 0.1}s`;
+        
+        // Check if element is already in viewport on page load
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            // Element is visible, reveal immediately with slight delay for animation
+            setTimeout(() => {
+                el.classList.add('revealed');
+            }, 100 + (index % 4) * 100);
+        }
+        
+        revealObserver.observe(el);
+    });
 
     // =========================================
     // Gallery Filter
