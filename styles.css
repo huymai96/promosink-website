@@ -44,6 +44,11 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 a {
@@ -1657,11 +1662,19 @@ section {
     }
     
     .hero-visual {
-        display: none;
+        display: none !important;
     }
     
     .process-timeline {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .integration-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .industries-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -1881,6 +1894,8 @@ section {
     .btn {
         padding: 0.875rem 1.5rem;
         font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
     }
     
     .btn-large {
@@ -1924,6 +1939,103 @@ section {
     
     .footer-brand .logo-img {
         height: 50px;
+    }
+    
+    /* Contact items stacked on mobile */
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .contact-item div {
+        text-align: center;
+    }
+    
+    /* Section padding */
+    section {
+        padding: 3rem 0;
+    }
+    
+    .services, .process, .capabilities, .gallery, .about {
+        padding: 3rem 0;
+    }
+    
+    /* Integration grid */
+    .integration-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Critical Mobile Overrides - ensure proper display */
+@media screen and (max-width: 992px) {
+    /* Force hide desktop nav */
+    .nav-links {
+        display: none !important;
+    }
+    
+    /* Force show mobile menu button */
+    .mobile-menu {
+        display: flex !important;
+    }
+    
+    /* Force show mobile nav when active */
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Force hide hero visual cards */
+    .hero-visual {
+        display: none !important;
+    }
+    
+    /* Scroll indicator hidden on mobile */
+    .scroll-indicator {
+        display: none;
+    }
+    
+    /* Navbar padding */
+    .navbar {
+        padding: 1rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    /* Hero full width */
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Section headers */
+    .section-header {
+        text-align: center;
+    }
+    
+    .section-header.left {
+        text-align: center;
+    }
+    
+    /* Contact details stacked */
+    .contact-details {
+        gap: 1rem;
+    }
+    
+    /* CTA section */
+    .cta-section {
+        padding: 3rem 1rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.75rem;
+    }
+    
+    .cta-content p {
+        font-size: 0.95rem;
     }
 }
 
