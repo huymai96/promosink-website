@@ -21,12 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
     // =========================================
     const mobileMenu = document.getElementById('mobileMenu');
+    const mobileNav = document.getElementById('mobileNav');
     const navLinks = document.getElementById('navLinks');
     
-    if (mobileMenu) {
+    if (mobileMenu && mobileNav) {
         mobileMenu.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
             mobileMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close mobile nav when clicking links
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
     }
 
