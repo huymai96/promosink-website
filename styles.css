@@ -102,10 +102,12 @@ img {
     height: 50px;
     width: auto;
     transition: var(--transition);
+    filter: brightness(1.1) drop-shadow(0 0 8px rgba(255, 51, 102, 0.3));
 }
 
 .logo:hover .logo-img {
     transform: scale(1.05);
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 51, 102, 0.5));
 }
 
 .navbar.scrolled .logo-img {
@@ -115,6 +117,7 @@ img {
 /* Footer logo slightly larger */
 .footer-brand .logo-img {
     height: 60px;
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(255, 51, 102, 0.4));
 }
 
 .nav-links {
@@ -1320,6 +1323,112 @@ section {
 .integration-item p {
     font-size: 0.8rem;
     color: var(--color-text-muted);
+}
+
+/* Certifications Section */
+.certifications {
+    background: linear-gradient(135deg, rgba(255, 51, 102, 0.08), rgba(0, 212, 255, 0.05));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 3rem 0;
+}
+
+.certifications-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 2rem;
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.2);
+}
+
+.cert-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cert-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+}
+
+.cert-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.cert-label {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.cert-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.cert-divider {
+    width: 1px;
+    height: 60px;
+    background: var(--color-border);
+}
+
+.cert-stats {
+    display: flex;
+    gap: 3rem;
+}
+
+.cert-stat {
+    text-align: center;
+}
+
+.cert-stat-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-text);
+    display: block;
+}
+
+.cert-stat-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 992px) {
+    .certifications-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cert-divider {
+        width: 100px;
+        height: 1px;
+    }
+    
+    .cert-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
 }
 
 /* Industries Section */
