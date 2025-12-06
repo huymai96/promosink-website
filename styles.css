@@ -96,6 +96,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+}
+
+@media (max-width: 992px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
 }
 
 .logo {
@@ -129,6 +136,17 @@ img {
     display: flex;
     align-items: center;
     gap: 2.5rem;
+}
+
+/* Hide nav-links on mobile - must be here for specificity */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
 }
 
 .nav-links a {
